@@ -1,0 +1,23 @@
+{
+  "validUser": {
+    "username": "cadmin",
+    "password": "Master@1234"
+  },
+  "invalidUsers": [
+    {
+      "username": "wronguser",
+      "password": "wrongpass",
+      "errorMessage": "Invalid username or password"
+    },
+    {
+      "username": "cadmin",
+      "password": "wrongpass",
+      "errorMessage": "Invalid username or password"
+    }
+  ],
+  "emptyCredentials": {
+    "username": "",
+    "password": "",
+    "errorMessage": "Username and Password are required"
+  }
+} 

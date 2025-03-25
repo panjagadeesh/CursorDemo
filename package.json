@@ -1,0 +1,24 @@
+{
+  "name": "cypress-automation-framework",
+  "version": "1.0.0",
+  "description": "Cypress Automation Framework with Page Object Model",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "test:report": "cypress run --reporter cypress-multi-reporters --reporter-options configFile=cypress.config.js",
+    "test:automated": "cypress run --headless --browser chrome --spec 'cypress/e2e/**/*.cy.js' --reporter cypress-multi-reporters --reporter-options configFile=cypress.config.js",
+    "test:headed": "cypress run --headed --browser chrome --spec 'cypress/e2e/login.cy.js'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.6.1",
+    "cypress-multi-reporters": "^1.6.1",
+    "cypress-xpath": "^2.0.1",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.3.0",
+    "mochawesome-report-generator": "^6.2.0"
+  }
+}

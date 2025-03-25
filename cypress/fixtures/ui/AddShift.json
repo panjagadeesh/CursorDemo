@@ -1,0 +1,30 @@
+[
+    {
+        "Inputshift": "testingcypress",
+        "Inputcode": "sdfsdkf",
+        "MinHHFullday": "08",
+        "MinMMFullday": "16",
+        "MinHHhalfday": "04",
+        "MinMMhalfday": "30",
+        "sessionName": "session1",
+        "StartTimeHH": "09",
+        "StartTimeMM": "19",
+        "Start_Period_Selector": "AM",
+        "EndTimeHH": "01",
+        "EndTimeMM": "19",
+        "End_Period_Selector": "PM",
+        "In_Time_Grace": "23",
+        "Out_Time_Grace": "60"
+    },
+    {
+        "sessionName": "session3",
+        "StartTimeHH": "06",
+        "StartTimeMM": "36",
+        "Start_Period_Selector": "PM",
+        "EndTimeHH": "08",
+        "EndTimeMM": "30",
+        "End_Period_Selector": "AM",
+        "In_Time_Grace": "30",
+        "Out_Time_Grace": "60"
+    }
+] 

@@ -1,0 +1,177 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 1,
+    "pending": 0,
+    "failures": 3,
+    "start": "2025-03-25T18:45:45.149Z",
+    "end": "2025-03-25T18:46:49.381Z",
+    "duration": 64232,
+    "testsRegistered": 4,
+    "passPercent": 25,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "aded2cdb-97d8-4036-b268-c24edcecfcd2",
+      "title": "",
+      "fullFile": "cypress\\integration\\ui\\login\\login.cy.js",
+      "file": "cypress\\integration\\ui\\login\\login.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4dd50e80-1474-4356-b4ae-a6446bc1a7b2",
+          "title": "Login Functionality",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should login successfully with valid credentials",
+              "fullTitle": "Login Functionality should login successfully with valid credentials",
+              "timedOut": null,
+              "duration": 6901,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const {\n  username,\n  password\n} = _testData.default.validUser;\nloginPage.login(username, password);\nloginPage.verifySuccessfulLogin();",
+              "err": {},
+              "uuid": "1cbeb04e-2b8e-438a-b230-5f807ea8165c",
+              "parentUUID": "4dd50e80-1474-4356-b4ae-a6446bc1a7b2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should show error message for invalid credentials: wronguser",
+              "fullTitle": "Login Functionality should show error message for invalid credentials: wronguser",
+              "timedOut": null,
+              "duration": 18053,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "loginPage.login(userData.username, userData.password);\nloginPage.verifyErrorMessage(userData.errorMessage);",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 10000ms: Expected to find element: `.ah-error-message`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 10000ms: Expected to find element: `.ah-error-message`, but never found it.\n    at LoginPage.verifyErrorMessage (webpack://cypress-automation-framework/./cypress/pages/ui/hrf/LoginPage.js:50:13)\n    at Context.eval (webpack://cypress-automation-framework/./cypress/integration/ui/login/login.cy.js:26:22)",
+                "diff": null
+              },
+              "uuid": "0f70ed5a-b177-4de3-ac49-1e7c6cc405b6",
+              "parentUUID": "4dd50e80-1474-4356-b4ae-a6446bc1a7b2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should show error message for invalid credentials: cadmin",
+              "fullTitle": "Login Functionality should show error message for invalid credentials: cadmin",
+              "timedOut": null,
+              "duration": 19971,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "loginPage.login(userData.username, userData.password);\nloginPage.verifyErrorMessage(userData.errorMessage);",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 10000ms: Expected to find element: `.ah-error-message`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 10000ms: Expected to find element: `.ah-error-message`, but never found it.\n    at LoginPage.verifyErrorMessage (webpack://cypress-automation-framework/./cypress/pages/ui/hrf/LoginPage.js:50:13)\n    at Context.eval (webpack://cypress-automation-framework/./cypress/integration/ui/login/login.cy.js:26:22)",
+                "diff": null
+              },
+              "uuid": "7d01cc9d-7dd9-4fd2-8ab1-dc277dfcf7ad",
+              "parentUUID": "4dd50e80-1474-4356-b4ae-a6446bc1a7b2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should show error message for empty credentials",
+              "fullTitle": "Login Functionality should show error message for empty credentials",
+              "timedOut": null,
+              "duration": 18949,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const {\n  username,\n  password,\n  errorMessage\n} = _testData.default.emptyCredentials;\nloginPage.login(username, password);\nloginPage.verifyErrorMessage(errorMessage);",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 10000ms: Expected to find element: `.ah-error-message`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 10000ms: Expected to find element: `.ah-error-message`, but never found it.\n    at LoginPage.verifyErrorMessage (webpack://cypress-automation-framework/./cypress/pages/ui/hrf/LoginPage.js:50:13)\n    at Context.eval (webpack://cypress-automation-framework/./cypress/integration/ui/login/login.cy.js:34:18)",
+                "diff": null
+              },
+              "uuid": "6f2be74c-8b97-466f-8c74-1c73cd037972",
+              "parentUUID": "4dd50e80-1474-4356-b4ae-a6446bc1a7b2",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "1cbeb04e-2b8e-438a-b230-5f807ea8165c"
+          ],
+          "failures": [
+            "0f70ed5a-b177-4de3-ac49-1e7c6cc405b6",
+            "7d01cc9d-7dd9-4fd2-8ab1-dc277dfcf7ad",
+            "6f2be74c-8b97-466f-8c74-1c73cd037972"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 63874,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "timestamp": "mmddyyyy_HHMMss"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

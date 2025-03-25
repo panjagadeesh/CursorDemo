@@ -1,0 +1,164 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-03-25T18:52:27.966Z",
+    "end": "2025-03-25T18:52:53.031Z",
+    "duration": 25065,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "9eeecaa0-a6e2-4f75-9ae4-f45bb3b74e58",
+      "title": "",
+      "fullFile": "cypress\\integration\\ui\\hrf\\login.cy.js",
+      "file": "cypress\\integration\\ui\\hrf\\login.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "54041919-50c1-4f04-ac99-4cd364f55efb",
+          "title": "Login Functionality",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should login successfully with valid credentials",
+              "fullTitle": "Login Functionality should login successfully with valid credentials",
+              "timedOut": null,
+              "duration": 6639,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const {\n  username,\n  password\n} = _testData.default.validUser;\nloginPage.login(username, password);\nloginPage.verifySuccessfulLogin();",
+              "err": {},
+              "uuid": "bed6bc0e-b498-490b-95f4-deeb7f713268",
+              "parentUUID": "54041919-50c1-4f04-ac99-4cd364f55efb",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should show error message for invalid credentials: wronguser",
+              "fullTitle": "Login Functionality should show error message for invalid credentials: wronguser",
+              "timedOut": null,
+              "duration": 6119,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "loginPage.login(userData.username, userData.password);\nloginPage.verifyErrorMessage(userData.errorMessage);",
+              "err": {},
+              "uuid": "0c378a0c-adc2-4875-8cba-d7887ea03c87",
+              "parentUUID": "54041919-50c1-4f04-ac99-4cd364f55efb",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should show error message for invalid credentials: cadmin",
+              "fullTitle": "Login Functionality should show error message for invalid credentials: cadmin",
+              "timedOut": null,
+              "duration": 6279,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "loginPage.login(userData.username, userData.password);\nloginPage.verifyErrorMessage(userData.errorMessage);",
+              "err": {},
+              "uuid": "754052f8-034f-44ce-8d2c-d8643db09acc",
+              "parentUUID": "54041919-50c1-4f04-ac99-4cd364f55efb",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should show error message for empty credentials",
+              "fullTitle": "Login Functionality should show error message for empty credentials",
+              "timedOut": null,
+              "duration": 5808,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const {\n  username,\n  password,\n  errorMessage\n} = _testData.default.emptyCredentials;\nloginPage.login(username, password);\nloginPage.verifyErrorMessage(errorMessage);",
+              "err": {},
+              "uuid": "dd94e9f3-6d38-4d76-ac93-773815de8d6c",
+              "parentUUID": "54041919-50c1-4f04-ac99-4cd364f55efb",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "bed6bc0e-b498-490b-95f4-deeb7f713268",
+            "0c378a0c-adc2-4875-8cba-d7887ea03c87",
+            "754052f8-034f-44ce-8d2c-d8643db09acc",
+            "dd94e9f3-6d38-4d76-ac93-773815de8d6c"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 24845,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "timestamp": "mmddyyyy_HHMMss"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

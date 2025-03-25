@@ -1,0 +1,111 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-03-25T19:23:15.719Z",
+    "end": "2025-03-25T19:23:31.416Z",
+    "duration": 15697,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b49568dc-6d76-43da-8821-9081964dca65",
+      "title": "",
+      "fullFile": "cypress\\integration\\ui\\attendance\\Shifts\\ShiftManagement.cy.js",
+      "file": "cypress\\integration\\ui\\attendance\\Shifts\\ShiftManagement.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4c29fbfb-329f-4379-817f-84c4c06560da",
+          "title": "Shift Management",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should successfully add a new shift with sessions",
+              "fullTitle": "Shift Management should successfully add a new shift with sessions",
+              "timedOut": null,
+              "duration": 15632,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "// Load test data\ncy.fixture(\"ui/AddShift.json\").then(data => {\n  if (!data || !data.length) {\n    throw new Error('Test data is empty or invalid');\n  }\n  // Add new shift\n  shiftPage.clickAddShift();\n  shiftPage.fillShiftDetails(data[0]);\n  // Navigate to specific date\n  const {\n    pastdays,\n    monthday,\n    date\n  } = TEST_DATA;\n  const trimpastdays = pastdays.trim().toLowerCase();\n  const trimmonthday = monthday.trim().toLowerCase();\n  // Handle date navigation with error handling\n  cy.checkAndNavigate(trimpastdays, trimmonthday, date).then(() => {\n    // Add and fill sessions\n    shiftPage.addAndFillSessions(data);\n    // Handle shift saving based on number of sessions\n    shiftPage.handleSingleShift(data);\n  }).catch(error => {\n    cy.log('Error during shift creation:', error.message);\n    throw error; // Re-throw to fail the test\n  });\n});",
+              "err": {
+                "message": "TypeError: cy.checkAndNavigate(...).then(...).catch is not a function",
+                "estack": "TypeError: cy.checkAndNavigate(...).then(...).catch is not a function\n    at Context.eval (webpack://cypress-automation-framework/./cypress/integration/ui/attendance/Shifts/ShiftManagement.cy.js:49:24)",
+                "diff": null
+              },
+              "uuid": "45e0b644-7aa4-421b-b051-0d98068cea62",
+              "parentUUID": "4c29fbfb-329f-4379-817f-84c4c06560da",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "45e0b644-7aa4-421b-b051-0d98068cea62"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 15632,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "timestamp": "mmddyyyy_HHMMss"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

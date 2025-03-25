@@ -1,0 +1,169 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-03-25T18:30:56.015Z",
+    "end": "2025-03-25T18:31:11.376Z",
+    "duration": 15361,
+    "testsRegistered": 4,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 3,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "295617ee-4476-4331-bd11-cea404cd5d50",
+      "title": "",
+      "fullFile": "cypress\\integration\\ui\\login\\login.cy.js",
+      "file": "cypress\\integration\\ui\\login\\login.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d9559220-ffcd-4d54-8211-7029be4001e7",
+          "title": "Login Functionality",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should login successfully with valid credentials",
+              "fullTitle": "Login Functionality should login successfully with valid credentials",
+              "timedOut": null,
+              "duration": 14987,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const {\n  username,\n  password\n} = _testData.default.validUser;\nloginPage.login(username, password);\nloginPage.verifySuccessfulLogin();",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 10000ms: Expected to find element: `button[type=\"submit\"]`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 10000ms: Expected to find element: `button[type=\"submit\"]`, but never found it.\n    at LoginPage.clickLoginButton (webpack://cypress-automation-framework/./cypress/pages/ui/hrf/LoginPage.js:29:36)\n    at LoginPage.login (webpack://cypress-automation-framework/./cypress/pages/ui/hrf/LoginPage.js:37:13)\n    at Context.eval (webpack://cypress-automation-framework/./cypress/integration/ui/login/login.cy.js:18:18)",
+                "diff": null
+              },
+              "uuid": "08355fbc-8648-439a-849f-4ab7941be56e",
+              "parentUUID": "d9559220-ffcd-4d54-8211-7029be4001e7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should show error message for invalid credentials: wronguser",
+              "fullTitle": "Login Functionality should show error message for invalid credentials: wronguser",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "loginPage.login(userData.username, userData.password);\nloginPage.verifyErrorMessage(userData.errorMessage);",
+              "err": {},
+              "uuid": "d38fa6b1-9bc6-4f8f-b719-99f5f346585c",
+              "parentUUID": "d9559220-ffcd-4d54-8211-7029be4001e7",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "should show error message for invalid credentials: cadmin",
+              "fullTitle": "Login Functionality should show error message for invalid credentials: cadmin",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "loginPage.login(userData.username, userData.password);\nloginPage.verifyErrorMessage(userData.errorMessage);",
+              "err": {},
+              "uuid": "9ea6d028-0d7f-4357-b154-f724f5d0e2d2",
+              "parentUUID": "d9559220-ffcd-4d54-8211-7029be4001e7",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "should show error message for empty credentials",
+              "fullTitle": "Login Functionality should show error message for empty credentials",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const {\n  username,\n  password,\n  errorMessage\n} = _testData.default.emptyCredentials;\nloginPage.login(username, password);\nloginPage.verifyErrorMessage(errorMessage);",
+              "err": {},
+              "uuid": "ee0bde68-40e1-4cd6-b253-d7ef970e1c1b",
+              "parentUUID": "d9559220-ffcd-4d54-8211-7029be4001e7",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "08355fbc-8648-439a-849f-4ab7941be56e"
+          ],
+          "pending": [],
+          "skipped": [
+            "d38fa6b1-9bc6-4f8f-b719-99f5f346585c",
+            "9ea6d028-0d7f-4357-b154-f724f5d0e2d2",
+            "ee0bde68-40e1-4cd6-b253-d7ef970e1c1b"
+          ],
+          "duration": 14987,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "timestamp": "mmddyyyy_HHMMss"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

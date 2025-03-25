@@ -1,0 +1,111 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-03-25T19:34:08.221Z",
+    "end": "2025-03-25T19:34:44.351Z",
+    "duration": 36130,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "46a6de02-61dd-43e1-af19-5752126e3a36",
+      "title": "",
+      "fullFile": "cypress\\integration\\ui\\attendance\\Shifts\\ShiftManagement.cy.js",
+      "file": "cypress\\integration\\ui\\attendance\\Shifts\\ShiftManagement.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "5bd4fdf1-1066-4763-93f3-d8a1fbaab1d5",
+          "title": "Shift Management",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should successfully add a new shift with sessions",
+              "fullTitle": "Shift Management should successfully add a new shift with sessions",
+              "timedOut": null,
+              "duration": 35999,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "// Load test data\ncy.fixture(\"ui/AddShift.json\").then(data => {\n  if (!data || !data.length) {\n    throw new Error('Test data is empty or invalid');\n  }\n  // Add new shift\n  shiftPage.clickAddShift();\n  shiftPage.fillShiftDetails(data[0]);\n  // Navigate to specific date\n  const {\n    pastdays,\n    monthday,\n    date\n  } = TEST_DATA;\n  const trimpastdays = pastdays.trim().toLowerCase();\n  const trimmonthday = monthday.trim().toLowerCase();\n  // Handle date navigation and session creation\n  cy.checkAndNavigate(trimpastdays, trimmonthday, date).then(() => {\n    // Add and fill sessions after date navigation\n    shiftPage.addAndFillSessions(data);\n    shiftPage.handleSingleShift(data);\n  });\n});",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 10000ms: Expected to find element: `select`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 10000ms: Expected to find element: `select`, but never found it.\n    at AddShiftPage.handleSingleShift (webpack://cypress-automation-framework/./cypress/pages/ui/attendance/Shifts/AddShiftPage.js:145:15)\n    at Context.eval (webpack://cypress-automation-framework/./cypress/integration/ui/attendance/Shifts/ShiftManagement.cy.js:44:26)",
+                "diff": null
+              },
+              "uuid": "f39d5f99-19f3-4b51-b0d8-5749705e9f1e",
+              "parentUUID": "5bd4fdf1-1066-4763-93f3-d8a1fbaab1d5",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "f39d5f99-19f3-4b51-b0d8-5749705e9f1e"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 35999,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "timestamp": "mmddyyyy_HHMMss"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

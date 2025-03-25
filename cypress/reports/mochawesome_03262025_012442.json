@@ -1,0 +1,107 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 0,
+    "passes": 0,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-03-25T19:54:16.706Z",
+    "end": "2025-03-25T19:54:42.599Z",
+    "duration": 25893,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 1,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "42cb4326-4e2f-4bfe-822c-632c9375f470",
+      "title": "",
+      "fullFile": "cypress\\integration\\ui\\attendance\\Shifts\\ShiftManagement.cy.js",
+      "file": "cypress\\integration\\ui\\attendance\\Shifts\\ShiftManagement.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "7333286e-ef21-4559-a928-dab9a9eaecba",
+          "title": "Shift Management",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should successfully add a new shift with sessions",
+              "fullTitle": "Shift Management should successfully add a new shift with sessions",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Load test data\ncy.fixture(\"ui/AddShift.json\").then(data => {\n  if (!data || !data.length) {\n    throw new Error('Test data is empty or invalid');\n  }\n  // Add new shift\n  shiftPage.clickAddShift();\n  shiftPage.fillShiftDetails(data[0]);\n  // Navigate to specific date\n  const {\n    pastdays,\n    monthday,\n    date\n  } = TEST_DATA;\n  const trimpastdays = pastdays.trim().toLowerCase();\n  const trimmonthday = monthday.trim().toLowerCase();\n  // Handle date navigation and session creation\n  cy.checkAndNavigate(trimpastdays, trimmonthday, date).then(() => {\n    // Add and fill sessions after date navigation\n    shiftPage.addAndFillSessions(data);\n    shiftPage.handleSingleShift(data);\n    cy.Dropdown('Duration Calculated Method', \"Duration between first in and last out time\");\n  });\n});",
+              "err": {},
+              "uuid": "509cf6df-b3e4-42f6-95ce-0a6eee839001",
+              "parentUUID": "7333286e-ef21-4559-a928-dab9a9eaecba",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [
+            "509cf6df-b3e4-42f6-95ce-0a6eee839001"
+          ],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "timestamp": "mmddyyyy_HHMMss"
+      },
+      "version": "6.2.0"
+    }
+  }
+}
