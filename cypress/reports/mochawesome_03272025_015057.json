@@ -1,0 +1,173 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 2,
+    "pending": 0,
+    "failures": 2,
+    "start": "2025-03-26T20:18:58.276Z",
+    "end": "2025-03-26T20:20:57.296Z",
+    "duration": 119020,
+    "testsRegistered": 4,
+    "passPercent": 50,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "25efb2f9-9dab-4708-bf28-e5ca8026f311",
+      "title": "",
+      "fullFile": "cypress\\integration\\ui\\attendance\\Shifts\\ShiftManagement.cy.js",
+      "file": "cypress\\integration\\ui\\attendance\\Shifts\\ShiftManagement.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "dbecbd6c-8918-4eee-9c41-903e26ef8936",
+          "title": "Shift Management",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should successfully add a new shift with sessions",
+              "fullTitle": "Shift Management should successfully add a new shift with sessions",
+              "timedOut": null,
+              "duration": 43918,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Load test data\ncy.fixture(\"ui/AddShift.json\").then(data => {\n  if (!data || !data.length) {\n    throw new Error('Test data is empty or invalid');\n  }\n  // Add new shift\n  shiftPage.clickAddShift();\n  shiftPage.fillShiftDetails(data[0]);\n  // Navigate to specific date\n  const {\n    pastdays,\n    monthday,\n    date\n  } = TEST_DATA;\n  const trimpastdays = pastdays.trim().toLowerCase();\n  const trimmonthday = monthday.trim().toLowerCase();\n  // Handle date navigation and session creation\n  cy.checkAndNavigate(trimpastdays, trimmonthday, date).then(() => {\n    // Add and fill sessions after date navigation\n    shiftPage.addAndFillSessions(data);\n    shiftPage.handleSingleShift(data);\n    cy.wait(10000);\n    cy.get('div.modal-footer button.ah-btn').click();\n    cy.get('div.ah-access-content > div.ah-access-info:nth-child(2)').should('be.visible').and('contain.text', 'Shift has been added successfully!');\n    cy.get('button#request-close').click();\n  });\n});",
+              "err": {},
+              "uuid": "c75850ea-4726-46fd-883e-f951294bc38f",
+              "parentUUID": "dbecbd6c-8918-4eee-9c41-903e26ef8936",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should view details of the created shift",
+              "fullTitle": "Shift Management should view details of the created shift",
+              "timedOut": null,
+              "duration": 28645,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const SHIFT_CODE = '10AM_TO_6PM_1';\ncy.shiftTableAction(SHIFT_CODE, 'View Details');\ncy.get('div.ah-content-list-item').first().click();\ncy.get('div.close-action').first().click();",
+              "err": {
+                "message": "CypressError: Timed out retrying after 10050ms: `cy.click()` failed because this element is not visible:\n\n`<div _ngcontent-awo-c180=\"\" class=\"ah-content-list-item\">...</div>`\n\nThis element `<div.ah-content-list-item>` is not visible because its parent `<li.ah-content-list-item-set>` has CSS property: `visibility: hidden`\n\nFix this problem, or use `{force: true}` to disable error checking.\n\nhttps://on.cypress.io/element-cannot-be-interacted-with",
+                "estack": "CypressError: Timed out retrying after 10050ms: `cy.click()` failed because this element is not visible:\n\n`<div _ngcontent-awo-c180=\"\" class=\"ah-content-list-item\">...</div>`\n\nThis element `<div.ah-content-list-item>` is not visible because its parent `<li.ah-content-list-item-set>` has CSS property: `visibility: hidden`\n\nFix this problem, or use `{force: true}` to disable error checking.\n\nhttps://on.cypress.io/element-cannot-be-interacted-with\n    at runVisibilityCheck (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:144957:58)\n    at Object.isStrictlyVisible (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:144971:10)\n    at runAllChecks (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:113271:26)\n    at retryActionability (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:113339:16)\n    at tryCatcher (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:1830:23)\n    at Promise.attempt.Promise.try (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:4338:29)\n    at whenStable (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:143744:68)\n    at <unknown> (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:143685:14)\n    at tryCatcher (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:1830:23)\n    at Promise._settlePromiseFromHandler (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:1542:31)\n    at Promise._settlePromise (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:1599:18)\n    at Promise._settlePromise0 (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:1644:10)\n    at Promise._settlePromises (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:1724:18)\n    at Promise._fulfill (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:1668:18)\n    at <unknown> (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:5473:46)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypress-automation-framework/./cypress/integration/ui/attendance/Shifts/ShiftManagement.cy.js:58:51)",
+                "diff": null
+              },
+              "uuid": "c2827652-bdb7-4a38-afd4-147c298a26d9",
+              "parentUUID": "dbecbd6c-8918-4eee-9c41-903e26ef8936",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should view history of the created shift",
+              "fullTitle": "Shift Management should view history of the created shift",
+              "timedOut": null,
+              "duration": 28186,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const SHIFT_CODE = '10AM_TO_6PM_1';\ncy.shiftTableAction(SHIFT_CODE, 'View History');\ncy.get('div.close-action').first().click();",
+              "err": {
+                "message": "CypressError: Timed out retrying after 10050ms: `cy.click()` failed because this element is not visible:\n\n`<div _ngcontent-ffm-c180=\"\" class=\"close-action\">...</div>`\n\nThis element `<div.close-action>` is not visible because its parent `<div.ah-overlay-view-header>` has CSS property: `visibility: hidden`\n\nFix this problem, or use `{force: true}` to disable error checking.\n\nhttps://on.cypress.io/element-cannot-be-interacted-with",
+                "estack": "CypressError: Timed out retrying after 10050ms: `cy.click()` failed because this element is not visible:\n\n`<div _ngcontent-ffm-c180=\"\" class=\"close-action\">...</div>`\n\nThis element `<div.close-action>` is not visible because its parent `<div.ah-overlay-view-header>` has CSS property: `visibility: hidden`\n\nFix this problem, or use `{force: true}` to disable error checking.\n\nhttps://on.cypress.io/element-cannot-be-interacted-with\n    at runVisibilityCheck (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:144957:58)\n    at Object.isStrictlyVisible (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:144971:10)\n    at runAllChecks (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:113271:26)\n    at retryActionability (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:113339:16)\n    at tryCatcher (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:1830:23)\n    at Promise.attempt.Promise.try (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:4338:29)\n    at whenStable (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:143744:68)\n    at <unknown> (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:143685:14)\n    at tryCatcher (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:1830:23)\n    at Promise._settlePromiseFromHandler (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:1542:31)\n    at Promise._settlePromise (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:1599:18)\n    at Promise._settlePromise0 (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:1644:10)\n    at Promise._settlePromises (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:1724:18)\n    at Promise._fulfill (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:1668:18)\n    at <unknown> (https://settings-comics.akriviahcm.io/__cypress/runner/cypress_runner.js:5473:46)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypress-automation-framework/./cypress/integration/ui/attendance/Shifts/ShiftManagement.cy.js:66:43)",
+                "diff": null
+              },
+              "uuid": "5e8bcf2d-7d12-4e56-b2a4-e4de2624a431",
+              "parentUUID": "dbecbd6c-8918-4eee-9c41-903e26ef8936",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should update the created shift",
+              "fullTitle": "Shift Management should update the created shift",
+              "timedOut": null,
+              "duration": 17724,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const SHIFT_CODE = '10AM_TO_6PM_1';\ncy.shiftTableAction(SHIFT_CODE, 'Update');\ncy.get('.ah-form-card-footer-right button.ah-btn').click();",
+              "err": {},
+              "uuid": "3add39e2-e4ba-4dad-86a5-ab08af45c3ad",
+              "parentUUID": "dbecbd6c-8918-4eee-9c41-903e26ef8936",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c75850ea-4726-46fd-883e-f951294bc38f",
+            "3add39e2-e4ba-4dad-86a5-ab08af45c3ad"
+          ],
+          "failures": [
+            "c2827652-bdb7-4a38-afd4-147c298a26d9",
+            "5e8bcf2d-7d12-4e56-b2a4-e4de2624a431"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 118473,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "timestamp": "mmddyyyy_HHMMss"
+      },
+      "version": "6.2.0"
+    }
+  }
+}
