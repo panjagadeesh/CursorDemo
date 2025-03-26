@@ -165,3 +165,32 @@ Cypress.Commands.add('loginDetails', (role, username, password) => {
     // Wait for login to complete
     cy.wait(8000);
 });
+
+/**
+ * Custom command to handle shift actions menu
+ * @param {string} shiftCode - The shift code to find the row
+ * @param {string} action - The action to perform ('View Details', 'View History', or 'Update')
+ */
+Cypress.Commands.add('handleShiftAction', (shiftCode, action) => {
+    // Valid actions list
+    const validActions = ['View Details', 'View History', 'Update'];
+    if (!validActions.includes(action)) {
+        throw new Error(`Invalid action "${action}". Use one of: ${validActions.join(', ')}`);
+    }
+
+    // Find the row with the shift code and click its action menu
+    cy.get('table tbody tr')
+        .contains(shiftCode)
+        .parents('tr')
+        .find('.actions button, button:contains("Actions")')
+        .click();
+
+    // Wait for dropdown to be visible and click the specified action
+    cy.get('.dropdown-menu.show, .action-menu.show')
+        .should('be.visible')
+        .within(() => {
+            cy.contains(action)
+                .should('be.visible')
+                .click();
+        });
+});
