@@ -1,0 +1,131 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-03-26T19:24:59.302Z",
+    "end": "2025-03-26T19:25:29.425Z",
+    "duration": 30123,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 1,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "74153b5e-998a-4065-ae56-043dd15cc56a",
+      "title": "",
+      "fullFile": "cypress\\integration\\ui\\attendance\\Shifts\\ShiftManagement.cy.js",
+      "file": "cypress\\integration\\ui\\attendance\\Shifts\\ShiftManagement.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "c9a65bb4-bbd1-4f2e-be74-0b47b36821d1",
+          "title": "Shift Management",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should successfully add a new shift with sessions",
+              "fullTitle": "Shift Management should successfully add a new shift with sessions",
+              "timedOut": null,
+              "duration": 12511,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "// Load test data\ncy.fixture(\"ui/AddShift.json\").then(data => {\n  if (!data || !data.length) {\n    throw new Error('Test data is empty or invalid');\n  }\n  // Add new shift\n  shiftPage.clickAddShift();\n  shiftPage.fillShiftDetails(data[0]);\n  // Navigate to specific date\n  const {\n    pastdays,\n    monthday,\n    date\n  } = TEST_DATA;\n  const trimpastdays = pastdays.trim().toLowerCase();\n  const trimmonthday = monthday.trim().toLowerCase();\n  // Handle date navigation and session creation\n  cy.checkAndNavigate(trimpastdays, trimmonthday, date).then(() => {\n    // Add and fill sessions after date navigation\n    shiftPage.addAndFillSessions(data);\n    shiftPage.handleSingleShift(data);\n    cy.wait(10000);\n    cy.get('div.modal-footer button.ah-btn').click();\n    cy.get('div.ah-access-content > div.ah-access-info:nth-child(2)').should('be.visible').and('contain.text', 'Shift has been added successfully!');\n    cy.get('button#request-close').click();\n  });\n});",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 10000ms: Expected to find element: `div > .ah-setting-card`, but never found it.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Shift Management`",
+                "estack": "AssertionError: Timed out retrying after 10000ms: Expected to find element: `div > .ah-setting-card`, but never found it.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Shift Management`\n    at Context.eval (webpack://cypress-automation-framework/./cypress/support/commands.js:34:7)",
+                "diff": null
+              },
+              "uuid": "aa1874e3-12a1-4a29-9265-2b6154185032",
+              "parentUUID": "c9a65bb4-bbd1-4f2e-be74-0b47b36821d1",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should perform actions on the newly created shift",
+              "fullTitle": "Shift Management should perform actions on the newly created shift",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const SHIFT_CODE = '10AM_TO_6PM_1';\n// Test View Details action\ncy.handleShiftAction(SHIFT_CODE, 'View Details');\ncy.wait(2000); // Wait for details to load\ncy.get('.modal-content').should('be.visible');\ncy.get('.modal-header button.close').click();\n// Test View History action\ncy.handleShiftAction(SHIFT_CODE, 'View History');\ncy.wait(2000); // Wait for history to load\ncy.get('.modal-content').should('be.visible');\ncy.get('.modal-header button.close').click();\n// Test Update action\ncy.handleShiftAction(SHIFT_CODE, 'Update');\ncy.wait(2000); // Wait for update form to load\ncy.get('form').should('be.visible');",
+              "err": {},
+              "uuid": "643bed46-12c4-47dc-b511-f9c8ed29a5d4",
+              "parentUUID": "c9a65bb4-bbd1-4f2e-be74-0b47b36821d1",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "aa1874e3-12a1-4a29-9265-2b6154185032"
+          ],
+          "pending": [],
+          "skipped": [
+            "643bed46-12c4-47dc-b511-f9c8ed29a5d4"
+          ],
+          "duration": 12511,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "timestamp": "mmddyyyy_HHMMss"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

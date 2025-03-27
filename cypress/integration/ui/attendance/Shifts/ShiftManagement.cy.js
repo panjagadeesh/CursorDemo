@@ -48,35 +48,37 @@ describe('Shift Management', () => {
                     .should('be.visible')
                     .and('contain.text', 'Shift has been added successfully!');
                 cy.get('button#request-close').click()
-
             });
         });
     });
 
-    it('should perform actions on the newly created shift', () => {
+    it('should view details of the created shift', () => {
         const SHIFT_CODE = '10AM_TO_6PM_1';
-        
-        // Test View Details action
-        cy.handleShiftAction(SHIFT_CODE, 'View Details');
-        cy.wait(2000); // Wait for details to load
-        cy.get('.modal-content').should('be.visible');
-        cy.get('.modal-header button.close').click();
-        
-        // Test View History action
-        cy.handleShiftAction(SHIFT_CODE, 'View History');
-        cy.wait(2000); // Wait for history to load
-        cy.get('.modal-content').should('be.visible');
-        cy.get('.modal-header button.close').click();
-        
-        // Test Update action
-        cy.handleShiftAction(SHIFT_CODE, 'Update');
-        cy.wait(2000); // Wait for update form to load
-        cy.get('form').should('be.visible');
+        cy.shiftTableAction(SHIFT_CODE, 'View Details');
+        cy.wait(2000); // Add wait for modal to fully load
+        cy.get('div.close-action')
+            .should('be.visible')
+            .first()
+            .click();
     });
 
-    // Additional test cases can be added here
-    // Example:
-    // it('should validate shift creation with invalid data', () => {
-    //     // Test invalid data scenarios
-    // });
+    it('should view history of the created shift', () => {
+        const SHIFT_CODE = '10AM_TO_6PM_1';
+        cy.shiftTableAction(SHIFT_CODE, 'View History');
+        cy.wait(2000);
+        cy.get('div.ah-content-list-item')
+            .should('be.visible')
+            .first()
+            .click(); // Add wait for modal to fully load
+        cy.get('div.close-action')
+            .should('be.visible')
+            .first()
+            .click();
+    });
+
+    it('should update the created shift', () => {
+        const SHIFT_CODE = '10AM_TO_6PM_1';
+        cy.shiftTableAction(SHIFT_CODE, 'Update');
+        cy.get('.ah-form-card-footer-right button.ah-btn').click()
+    });
 }); 
